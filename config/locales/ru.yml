@@ -1,0 +1,7 @@
+ru:
+  create_ticket_title: Создаем новый тикет
+  activerecord:
+    attributes:
+      ticket:
+        title: Название
+        message: Сообщение

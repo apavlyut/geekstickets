@@ -1,0 +1,21 @@
+<h1>Tickets#index</h1>
+
+<ul>
+  <% @tickets.each do |ticket| %>
+    <li><%= link_to ticket.title, ticket %></li>
+  <% end %>
+</ul>
+
+
+<fieldset>
+  <legend><%= t "create_ticket_title" %></legend>
+  <%= form_for @ticket do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+
+    <%= f.label :message %>
+    <%= f.text_field :message %>
+
+    <%= f.submit 'Сохранить' %>
+  <% end %>
+</fieldset>
