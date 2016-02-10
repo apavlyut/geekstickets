@@ -3,7 +3,7 @@
 Team contributors:
 
 * Alexander Pavlyut, alex@deppkind.com, teacher.
-* Lukishin Anatoly, kinkmymail@gmail.com, developer
+* Anatoly Lukishin , kinkmymail@gmail.com, developer
 * Your Name, your@email.com, your role (developer)
 * ...
 
