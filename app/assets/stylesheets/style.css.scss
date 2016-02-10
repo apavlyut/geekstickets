@@ -1,0 +1,20 @@
+.pull-right {
+  float: right;
+}
+
+.text-right {
+  text-align: right;
+}
+
+ul.menu {
+  li {
+    list-style: none;
+    display: inline;
+  }
+}
+
+.field_with_errors {
+  label, input {
+    color: red;
+  }
+}

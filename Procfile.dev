@@ -1,1 +1,2 @@
 web: rails s -p $PORT
+logs: tail -f log/development.log

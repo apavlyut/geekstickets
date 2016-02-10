@@ -1,4 +1,5 @@
 class TicketsController < ApplicationController
+  before_action :authorize, only: [:create]
   def index
     @tickets = Ticket.all
     @ticket = Ticket.new
@@ -6,7 +7,7 @@ class TicketsController < ApplicationController
 
   def create
     @tickets = Ticket.all
-    @ticket = Ticket.new(params.require(:ticket).permit(:title, :message))
+    @ticket = current_user.tickets.new(params.require(:ticket).permit(:title, :message))
     if @ticket.save
       redirect_to tickets_path
     else
