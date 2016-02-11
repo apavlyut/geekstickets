@@ -1,2 +1,16 @@
-<h1>Comments#index</h1>
-<p>Find me in app/views/comments/index.html.erb</p>
+<h1><%= @ticket.title %></h1>
+<h3><%= @ticket.message %></h3>
+
+<hr>
+ <h2>Comments:</h2>
+
+
+  <div> 
+    <ul id='comments-list'>
+    <%= render @ticket.comments %>
+    </ul>
+  </div>
+
+
+<h2>Add a comment:</h2>
+<%= render "comments/form" %>

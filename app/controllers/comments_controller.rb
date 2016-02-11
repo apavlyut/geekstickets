@@ -1,20 +1,34 @@
 class CommentsController < ApplicationController
  
-  before_action :set_comment, only: [:show, :new, :edit, :update, :destroy]
+  before_action :get_ticket
+#  before_action :get_user
+
+#  def get_user
+#    @user = User.find(params[:user_id])
+#  end
+
+  def get_ticket
+    @ticket = Ticket.find(params[:ticket_id])
+  end
 
   def index
     @comments = Comment.all
   end
 
   def show
+    @comment = @ticket.comments.find(params[:id])
   end
 
   def new
-    @comment = Comment.new
   end
 
   def create
-    @comment = Comment.create(comment_params)
+    @comment = @ticket.comments.create(comment_params)
+    
+    respond_to do |format|
+      format.html { redirect_to ticket_path(@ticket) }
+      format.js
+    end
   end
 
   def edit
@@ -29,7 +43,7 @@ class CommentsController < ApplicationController
   private
 
   def set_comment
-    @comment = Comment.find(params[:id])
+    @comment = Comment.find(params[:ticket_id])
   end
 
   def comment_params
