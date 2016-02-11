@@ -6,6 +6,7 @@ Team contributors:
 * Anatoly Lukishin , kinkmymail@gmail.com, developer
 * Ivan Zabrodin, xvanx84@gmail.com, developer
 * Maksim Zaikin, asus568@gmail.com, developer
+* Vlad Filiucov, w4rmup1988@gmail.com, developer
 * Your Name, your@email.com, your role (developer)
 * ...
 
