@@ -1,15 +1,6 @@
 class CommentsController < ApplicationController
  
   before_action :get_ticket
-#  before_action :get_user
-
-#  def get_user
-#    @user = User.find(params[:user_id])
-#  end
-
-  def get_ticket
-    @ticket = Ticket.find(params[:ticket_id])
-  end
 
   def index
     @comments = Comment.all
@@ -44,6 +35,10 @@ class CommentsController < ApplicationController
 
   def set_comment
     @comment = Comment.find(params[:ticket_id])
+  end
+
+  def get_ticket
+    @ticket = Ticket.find(params[:ticket_id])
   end
 
   def comment_params
