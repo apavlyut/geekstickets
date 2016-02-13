@@ -13,3 +13,10 @@
 /tmp
 
 .DS_Store
+
+config/initializers/secret_token.rb
+config/secrets.yml
+
+# Environment normalization:
+/.bundle
+/vendor/bundle
