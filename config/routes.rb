@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
+
   resource :session
   resources :users
-  resources :tickets
+
+  resources :tickets do
+    resources :comments
+  end
 
   get 'login', to: 'sessions#new'
   get 'logout', to: 'sessions#destroy'

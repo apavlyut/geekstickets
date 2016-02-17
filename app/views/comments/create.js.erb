@@ -1,0 +1,5 @@
+
+var comments_list = $('#comments-list');
+comments_list.append('<%= escape_javascript(render partial: @comment) %>');
+comments_list.find('ul:last-child').addClass('last-comment');
+$('#comment_body').val("");
