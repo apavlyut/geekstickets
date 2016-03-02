@@ -2,7 +2,7 @@
 
 <ul>
   <% @tickets.each do |ticket| %>
-    <li><%= link_to ticket.title, ticket_comments_path(ticket) %> <%= show_author_of ticket %></li>
+    <li><%= link_to ticket.title, ticket_comments_path(ticket) %> <%= show_author_of ticket %> <div> <%= ticket.status %> </div></li>
   <% end %>
 </ul>
 
