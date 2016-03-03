@@ -1,0 +1,4 @@
+= simple_form_for Comment.new, remote: true do |f|
+  = f.input :body
+  = f.input :ticket_id, as: :hidden, input_html: { value: ticket.id}
+  = f.submit "Прокомментировать", class: 'btn btn-primary'

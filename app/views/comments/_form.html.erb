@@ -1,4 +1,0 @@
-<%= form_for([@ticket, @ticket.comments.build], remote: true) do |f| %>
-  <%= f.text_field :body %>
-  <%= f.submit "Comment" %>
-<% end %>

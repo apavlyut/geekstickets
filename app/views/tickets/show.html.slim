@@ -1,0 +1,22 @@
+h1.page-header
+  = @ticket.title
+  
+.row
+  .col-md-8
+  
+    .panel.panel-default
+      .panel-heading
+        h3.panel-title Тикет №#{@ticket.id}
+      .panel-body
+        = @ticket.message
+
+    ul#comments-list
+      = render @ticket.comments
+      
+    - if current_user
+      - if policy(Comment.new).create?
+        = render partial: 'comments/form', locals: {ticket: @ticket}
+      - else
+        .well Только сотрудники могут отвечать на тикеты
+    - else 
+      .well Чтобы оставить комментарий #{link_to 'Авторизуйтесь', login_path}

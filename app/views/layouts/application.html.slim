@@ -1,0 +1,59 @@
+doctype html
+html lang="ru" 
+  head
+    meta charset="utf-8" /
+    meta content="IE=edge" http-equiv="X-UA-Compatible" /
+    meta content="width=device-width, initial-scale=1" name="viewport" /
+    meta content="" name="description" /
+    meta content="" name="author" /
+    title Tickets
+    /! Custom styles for this template    
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => false
+    /! Just for debugging purposes. Don't actually copy these 2 lines!
+    = csrf_meta_tag
+  body
+    nav.navbar.navbar-default.navbar-fixed-top
+      .container
+        .navbar-header
+          button.navbar-toggle.collapsed aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" type="button" 
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          = link_to 'Geeks Tickets', root_url, class: 'navbar-brand'
+          / a.navbar-brand href="#" Geeks Tickets
+        #navbar.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li.active
+              = link_to 'Тикеты', tickets_path
+            / li
+            /   a href="#about"  About
+            / li
+            /   a href="#contact"  Contact
+              
+          ul.nav.navbar-nav.pull-right
+            - if current_user
+              li.dropdown
+                a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button" 
+                  '#{current_user.email} / #{current_user.role}
+                  span.caret
+                ul.dropdown-menu
+                  li
+                    = link_to 'Выход', logout_path
+            - else
+              li= link_to 'Вход', login_path
+              li= link_to 'Регистрация', new_user_path 
+        /! /.nav-collapse
+    /! Begin page content
+    .container
+      
+      = yield
+      
+    footer.footer
+      .container
+        p.text-muted Place sticky footer content here.
+    /!
+      | Bootstrap core JavaScript
+      | \==================================================
+    /! Placed at the end of the document so the pages load faster

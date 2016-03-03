@@ -1,0 +1,26 @@
+h1.page-header Тикеты
+
+.row
+  .col-md-8
+    .list-group
+      - @tickets.each do |ticket|
+        
+        = link_to ticket, class: 'list-group-item' do
+        
+          .list-group-item-heading= ticket.title
+          .list-group-item-text
+            em= ticket.message
+            .pull-right= show_author_of ticket
+  .col-md-4
+    - if current_user
+      - if policy(Ticket.new).create?
+        fieldset
+          legend= t "create_ticket_title"
+          = simple_form_for Ticket.new, input_html: {class: 'form-vertical'} do |f|
+            = f.input :title
+            = f.input :message
+            = f.submit 'Добавить', class: 'btn btn-primary'
+      - else
+        .well Только клиенты могут добавлять тикеты
+    - else 
+      .well Чтобы добавить тикет #{link_to 'Авторизуйтесь', login_path}

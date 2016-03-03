@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resource :session
   resources :users
 
+  resources :comments
+
   resources :tickets do
     resources :comments
   end

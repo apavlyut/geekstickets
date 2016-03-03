@@ -1,21 +1,22 @@
 class CommentsController < ApplicationController
- 
-  before_action :get_ticket
+
+  # before_action :get_ticket
 
   def index
-    @comments = Comment.all
+    @comments = policy_scope(Comment.all)
   end
 
   def show
     @comment = @ticket.comments.find(params[:id])
+
   end
 
   def new
   end
 
   def create
-    @comment = @ticket.comments.create(comment_params)
-    
+    @comment = current_user.comments.create(comment_params)
+    authorize @comment
     respond_to do |format|
       format.html { redirect_to ticket_path(@ticket) }
       format.js
