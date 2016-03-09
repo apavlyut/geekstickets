@@ -56,3 +56,4 @@ end
 gem 'pundit'
 gem 'slim-rails'
 gem 'simple_form'
+gem 'state_machines-activerecord'

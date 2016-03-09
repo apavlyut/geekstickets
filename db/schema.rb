@@ -27,10 +27,13 @@ ActiveRecord::Schema.define(version: 20160303084725) do
   create_table "tickets", force: :cascade do |t|
     t.string   "title"
     t.text     "message"
-    t.boolean  "resolved",   default: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.boolean  "resolved",      default: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.integer  "user_id"
+    t.string   "state"
+    t.date     "release_date"
+    t.string   "cancel_reason"
   end
 
   add_index "tickets", ["user_id"], name: "index_tickets_on_user_id", using: :btree
