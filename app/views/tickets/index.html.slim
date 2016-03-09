@@ -6,11 +6,13 @@ h1.page-header Тикеты
       - @tickets.each do |ticket|
         
         = link_to ticket, class: 'list-group-item' do
-        
+
           .list-group-item-heading= ticket.title
           .list-group-item-text
             em= ticket.message
-            .pull-right= show_author_of ticket
+             .pull-right= show_author_of ticket
+             .center= ticket.status
+
   .col-md-4
     - if current_user
       - if policy(Ticket.new).create?
