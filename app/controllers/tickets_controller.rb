@@ -1,11 +1,11 @@
 class TicketsController < ApplicationController
   before_action :check_access, only: [:create]
   def index
-    @tickets = policy_scope(Ticket.all)
+    @tickets = policy_scope(Ticket.all.where(project_id: params[:project_id]))
   end
 
   def create
-    @ticket = current_user.tickets.new(params.require(:ticket).permit(:title, :message))
+    @ticket = current_user.tickets.new(params.require(:ticket).permit(:title, :message, :project_id))
     authorize @ticket
     if @ticket.save
       SLACK_NOTIFIER.ping("You have a new ticket <a href='#{request.protocol}#{request.host_with_port}#{ticket_comments_path(@ticket)}'>Check it here</a>")
