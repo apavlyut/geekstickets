@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :check_access, only: [:create]
+  before_action :check_access, only: [:create, :show]
 
   def index
     @projects = policy_scope(Project.all)
@@ -8,6 +8,7 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     @tickets = @project.tickets
+    authorize @project
   end
 
   def create
