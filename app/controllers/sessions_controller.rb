@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  skip_after_action :verify_authorized, :verify_policy_scoped
   def create
     user = User.find_by email: params[:email]
     if user && user.authenticate(params[:password])
