@@ -57,3 +57,4 @@ gem 'pundit'
 gem 'slim-rails'
 gem 'simple_form'
 gem 'state_machines-activerecord'
+gem 'rails_12factor', group: :production
