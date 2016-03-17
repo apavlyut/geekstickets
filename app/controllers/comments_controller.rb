@@ -3,12 +3,12 @@ class CommentsController < ApplicationController
   # before_action :get_ticket
 
   def index
+    @ticket = Ticket.find(params[:ticket_id])
     @comments = policy_scope(Comment.all)
   end
 
   def show
     @comment = @ticket.comments.find(params[:id])
-
   end
 
   def new
