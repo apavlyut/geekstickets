@@ -8,7 +8,12 @@ class TicketsController < ApplicationController
     @ticket = current_user.tickets.new(params.require(:ticket).permit(:title, :message))
     authorize @ticket
     if @ticket.save
-      SLACK_NOTIFIER.ping("You have a new ticket <a href='#{request.protocol}#{request.host_with_port}#{ticket_comments_path(@ticket)}'>Check it here</a>")
+
+      href = "#{request.protocol}#{request.host_with_port}#{ticket_comments_path(@ticket)}"
+
+      href = ticket_url(@ticket)
+
+      SLACK_NOTIFIER.ping("You have a new ticket <a href='#{href}'>Check it here</a>")
     end
     redirect_to tickets_path
   end
