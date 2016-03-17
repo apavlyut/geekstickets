@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
     update(role: 'manager')
   end
 
+  #HAHA
   def make_user!
     update(role: 'user')
   end
