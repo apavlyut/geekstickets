@@ -14,6 +14,11 @@ class CommentsController < ApplicationController
   def new
   end
 
+  def sort_menow
+    # asdasd
+    @ticket = Titcket.find(params[:id])
+  end
+
   def create
     @comment = current_user.comments.create(comment_params)
     authorize @comment

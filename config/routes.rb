@@ -3,7 +3,12 @@ Rails.application.routes.draw do
   resource :session
   resources :users
 
-  resources :comments
+  concern :sortable do
+    post :sort, on: :collection
+    get :sort_menow, on: :member
+  end
+
+  resources :comments, concerns: :sortable
 
   resources :tickets do
     resources :comments
