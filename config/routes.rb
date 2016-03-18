@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :projects
+
   resource :session
   resources :users
 
@@ -20,5 +22,5 @@ Rails.application.routes.draw do
   get 'home/hello'
   # get 'home/hello', to: 'home#hello'
 
-  root 'tickets#index'
+  root 'projects#index'
 end

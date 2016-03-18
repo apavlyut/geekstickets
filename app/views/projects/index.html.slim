@@ -1,0 +1,28 @@
+h1.page-header Projects
+
+.row
+  .col-md-8
+    .list-group
+      - @projects.each do |project|
+        
+        = link_to project, class: 'list-group-item' do
+
+          .list-group-item-heading= project.title
+          .list-group-item-text
+            em= project.description
+             .pull-right= show_author_of project
+             .center= ticket.status
+
+  .col-md-4
+    - if current_user
+      - if policy(Project.new).create?
+        fieldset
+          legend= t "create_project_title"
+          = simple_form_for Project.new, input_html: {class: 'form-vertical'} do |f|
+            = f.input :title
+            = f.input :description
+            = f.submit 'Добавить', class: 'btn btn-primary'
+      - else
+        .well Только мэнэджеры могут добавлять проекты
+    - else 
+      .well Чтобы добавить тикет #{link_to 'Авторизуйтесь', login_path}

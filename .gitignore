@@ -20,3 +20,5 @@ config/secrets.yml
 # Environment normalization:
 /.bundle
 /vendor/bundle
+.ruby-version
+.ruby-gemset
